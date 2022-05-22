@@ -1,0 +1,18 @@
+create table Emp1(EmpId int identity(1,1)
+ not null constraint pk_Emp_Empid primary key
+ (Empid),EmpName varchar(50) not null,
+ ManagerId int null
+ constraint fk_Emp_ManagerId foreign key (Managerid)
+ references Emp1(EmpId))
+
+ 
+ insert into Emp1(EmpName,ManagerId)values
+ ('Md Asfaque Ansari',1),
+ ('Aditya Yadav',3),
+ ('Depak Kumar',2),
+ ('Vinod kumar',1),
+ ('Rebel',4)
+ 
+ Select a.EmpName,b.EmpName as MangerNam into SelfJoinTable from 
+ Emp1 as a inner join Emp1 as b
+ on a.ManagerId=b.EmpId
